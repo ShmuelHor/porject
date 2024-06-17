@@ -12,9 +12,13 @@ app.use(cors());
 
 
 // GET car by id- chack if exist
-app.get('/api/users', async(req, res) => {
+
+    
+
+app.get('/api/user/:userName/:password', async(req, res) => {
     try {
         const user = await db.getUser(req.params)
+        console.log(user);
         res.send(user);
     } catch(error) {
         res.status(500).send('sory, please sign in')

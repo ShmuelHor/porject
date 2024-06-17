@@ -33,6 +33,14 @@ async function createUser(newUser) {
 
 
 main()
+createUser({userName:"shmuel1",password:"123456"})
+// createUser({userName:"shmuel2",password:"123456"})
+// createUser({userName:"shmuel3",password:"123456"})
+// createUser({userName:"shmuel4",password:"123456"})
+// createUser({userName:"shmuel5",password:"123456"})
+// createUser({userName:"shmuel6",password:"123456"})
+// createUser({userName:"shmuel7",password:"123456"})
+
 /*
 createUser({userName:"Yedidya", password:"12345"})
 */
