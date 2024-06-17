@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="index2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>חיפוש רופאים</h1>
+        <!-- חיפוש לפי אזור -->
+        <div class="search-section" id="region-search">
+            <label for="region">חיפוש לפי אזור:</label>
+            <select id="region" class="search-dropdown">
+                <option value="">בחר אזור</option>
+                <option value="south">דרום</option>
+                <option value="central">מרכז</option>
+                <option value="north">צפון</option>
+            </select>
+            <button id="search-by-region" class="search-button">חפש לפי אזור</button>
+        </div>
+        
+        <!-- חיפוש לפי תחום טיפול -->
+        <div class="search-section" id="specialty-search">
+            <label for="specialty">חיפוש לפי תחום טיפול:</label>
+            <select id="specialty" class="search-dropdown">
+                <option value="">בחר תחום טיפול</option>
+                <option value="psychology">פסיכולוגיה</option>
+                <option value="social_work">עבודה סוציאלית</option>
+                <option value="nlp">NLP</option>
+            </select>
+            <button id="search-by-specialty" class="search-button">חפש לפי תחום טיפול</button>
+        </div>
+        <div class="search-section">
+        <button id="all" class="search-button">הצג את כל המטפלים</button>
+        </div>
+    </div>
+    
+    <button id="log_out">log out</button>
+    <script  src="index2.js"></script>
+</body>
+</html>
