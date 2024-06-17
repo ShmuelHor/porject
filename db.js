@@ -24,7 +24,7 @@ const User = mongoose.model('users', userSchema)
 async function getUser(user) {
     const result = await User.findOne({userName: user.userName, password: user.password})
     return result
-}
+
 
 async function createUser(newUser) {
     const result = await User.create(newUser)
@@ -47,4 +47,5 @@ createUser({userName:"Yedidya", password:"12345"})
 module.exports = {
     getUser,
     createUser
+}
 }
