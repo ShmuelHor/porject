@@ -1,0 +1,84 @@
+/* סגנון בסיסי לעיצוב הדף */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* גרדיינט צבעים */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* גובה של כל חלון */
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center; /* מרכז את התוכן */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left; /* מיישר את התוויות ואת הקלט לשמאל */
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.input-group input {
+    width: calc(100% - 20px); /* מבטיח שהקלט לא יגלוש */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* כוללת את הפדינג ואת הגבול ברוחב הקלט */
+    font-size: 16px;
+}
+
+.input-group input:focus {
+    border-color: #6a11cb;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #5a0fb2;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 500px) {
+    .login-container {
+        padding: 15px;
+    }
+
+    .input-group input {
+        width: calc(100% - 16px); /* התאמה לגודל קטן יותר */
+    }
+}
