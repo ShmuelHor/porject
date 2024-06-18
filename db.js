@@ -18,13 +18,21 @@ const userSchema = new Schema({
 })
 
 const User = mongoose.model('users', userSchema)
+
+const therpaistsSchema = new Schema({
+    therpaistsName: String,
+    specialization: [],
+    location: String
+})
+
+const Therapist = mongoose.model('therapists', userSchema)
             
 
 
 async function getUser(user) {
     const result = await User.findOne({userName: user.userName, password: user.password})
     return result
-
+}
 
 async function createUser(newUser) {
     const result = await User.create(newUser)
@@ -32,20 +40,34 @@ async function createUser(newUser) {
 }
 
 
-main()
-createUser({userName:"shmuel1",password:"123456"})
-// createUser({userName:"shmuel2",password:"123456"})
-// createUser({userName:"shmuel3",password:"123456"})
-// createUser({userName:"shmuel4",password:"123456"})
-// createUser({userName:"shmuel5",password:"123456"})
-// createUser({userName:"shmuel6",password:"123456"})
-// createUser({userName:"shmuel7",password:"123456"})
+async function createTherpaist(newTherpaist) {
+    const result = await Therapist.create(newTherpaist)
+    return result
+}
 
-/*
-createUser({userName:"Yedidya", password:"12345"})
-*/
+async function getTHerapists() {
+    const result = await Therapist.find()
+    return result
+}
+
+async function getTHerapists(field, value) {
+    
+    const result = await Therapist.find({ [field]: value });
+    return result;
+}
+
+
+async function getTHerapistsBySpecialty(value) {
+    
+    const result = await Therapist.find({["specialization"]: { $in: [value] } });
+    return result;
+}
+main()
+
 module.exports = {
     getUser,
-    createUser
-}
+    createUser,
+    getTHerapists,
+    createTherpaist,
+    getTHerapistsBySpecialty
 }
