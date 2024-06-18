@@ -34,12 +34,13 @@ function displayTherapists(therapists) {
 
         // הוספת פריט המטפל לרשימה
         therapistList.appendChild(therapistItem);
+        therapistList.addEventListener("click",() => ChoosingATherapist(therapist))
     });
 }
 
 
 //log out function
-var button = document.getElementById("log_out");
+let button = document.getElementById("log_out");
 button.onclick = myFunction;
 
 function myFunction() {
@@ -95,5 +96,14 @@ document.getElementById('all').addEventListener('click',async function() {
     }
    
 });
+function ChoosingATherapist(therapist){
+    try {
+        localStorage.setItem('therapist',JSON.stringify(therapist))
 
+       window.location.href = "index3.html";
+        
+    } catch (error) {
+        console.log(error)
+    }
 
+}

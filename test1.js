@@ -12,63 +12,19 @@ const therapists = [
     {
         therapistsName: "Dr. Jonathan Smith",
         specialization: ["פסיכולוגיה", "NLP"],
-        location: "מרכז",
-        _id: "1"
-    },
+        location: "מרכז"
+        },
     {
         therapistsName: "Sarah Johnson",
         specialization: ["עבודה סוציאלית"],
-        location: "צפון",
-        _id: "2"
-    },
+        location: "צפון"
+        },
     {
         therapistsName: "Michael Davis",
         specialization: ["NLP", "פסיכולוגיה"],
-        location: "דרום",
-        _id: "3"
-    },
-    {
-        therapistsName: "Emily White",
-        specialization: ["פסיכולוגיה"],
-        location: "מרכז",
-        _id: "4"
-    },
-    {
-        therapistsName: "David Brown",
-        specialization: ["עבודה סוציאלית", "NLP"],
-        location: "מרכז",
-        _id: "5"
-    },
-    {
-        therapistsName: "Rachel Green",
-        specialization: ["NLP"],
-        location: "צפון",
-        _id: "6"
-    },
-    {
-        therapistsName: "James Wilson",
-        specialization: ["פסיכולוגיה", "עבודה סוציאלית"],
-        location: "דרום",
-        _id: "7"
-    },
-    {
-        therapistsName: "Laura Taylor",
-        specialization: ["עבודה סוציאלית"],
-        location: "צפון",
-        _id: "8"
-    },
-    {
-        therapistsName: "Thomas Anderson",
-        specialization: ["NLP", "פסיכולוגיה"],
-        location: "מרכז",
-        _id: "9"
-    },
-    {
-        therapistsName: "Linda Martinez",
-        specialization: ["פסיכולוגיה"],
-        location: "דרום",
-        _id: "10"
-    }
+        location: "דרום"
+        },
+    
 ];
 
 async function insertTherapists() {

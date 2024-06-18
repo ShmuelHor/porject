@@ -47,6 +47,7 @@ async function createTherpaist(newTherpaist) {
 
 async function getTHerapists() {
     const result = await Therapist.find()
+    console.log(result);
     return result
 }
 
