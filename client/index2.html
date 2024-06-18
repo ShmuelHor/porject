@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="index2.css">
 </head>
 <body>
+  
     <div class="container">
         <h1>חיפוש רופאים</h1>
         <!-- חיפוש לפי אזור -->
@@ -14,9 +15,9 @@
             <label for="region">חיפוש לפי אזור:</label>
             <select id="region" class="search-dropdown">
                 <option value="">בחר אזור</option>
-                <option value="south">דרום</option>
-                <option value="central">מרכז</option>
-                <option value="north">צפון</option>
+                <option value="דרום">דרום</option>
+                <option value="מרכז">מרכז</option>
+                <option value="צפון">צפון</option>
             </select>
             <button id="search-by-region" class="search-button">חפש לפי אזור</button>
         </div>
@@ -26,9 +27,9 @@
             <label for="specialty">חיפוש לפי תחום טיפול:</label>
             <select id="specialty" class="search-dropdown">
                 <option value="">בחר תחום טיפול</option>
-                <option value="psychology">פסיכולוגיה</option>
-                <option value="social_work">עבודה סוציאלית</option>
-                <option value="nlp">NLP</option>
+                <option value="פסיכולוגיה">פסיכולוגיה</option>
+                <option value="עבודה סוציאלית">עבודה סוציאלית</option>
+                <option value="NLP">NLP</option>
             </select>
             <button id="search-by-specialty" class="search-button">חפש לפי תחום טיפול</button>
         </div>
@@ -36,6 +37,11 @@
         <button id="all" class="search-button">הצג את כל המטפלים</button>
         </div>
     </div>
+<div class="container2">
+    <h1 id="list1"></h1>
+    <ul id="therapistList" class="therapist-list">
+    </ul>
+</div>
     
     <button id="log_out">log out</button>
     <script  src="index2.js"></script>
