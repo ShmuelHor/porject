@@ -44,7 +44,7 @@ button.onclick = myFunction;
 
 function myFunction() {
     localStorage.removeItem('user');
-    window.location.href = "indexP.html";
+    window.location.href = "index1.html";
 }
 
 
