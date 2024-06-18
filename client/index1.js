@@ -5,24 +5,32 @@ const submitBut = document.getElementById("submit");
 submitBut.addEventListener("click", () => adduser(username.value, password.value));
 
 // async function getTeslas() {
-//     try {
+//       try {
 //         const res = await fetch("http://localhost:8080/api/teslas");
 //         const data = await res.json();
 //         console.log(data);
 
 //         data.forEach(carObject => appendCar(carObject));
 //     } catch (error) {
-//         console.error(error);
-//     }
-// }
-
+    //         console.error(error);
+    //     }
+    // }
+    
 async function adduser(username, password) {
+    if (username === "" || password === "") {
+        alert('אנא מלא את כל השדות');
+        return;
+    }
     try {
         const res = await fetch(`http://localhost:3001/api/users/${username}/${password}`);
         const data = await res.json();
         console.log(data);
+        localStorage.setItem('user',JSON.stringify(data))
+
+       window.location.href = "index2.html";
+        
     } catch (error) {
-        console.error(error);
+        console.log('sory, please sign in')
     }
     username = ""
     password = ""
