@@ -12,17 +12,27 @@ app.use(cors());
 
 
 // GET car by id- chack if exist
-
-    
-
-app.get('/api/user/:userName/:password', async(req, res) => {
-    try {
+app.get('/api/users/:userName/:password', async(req, res) => {
+   
         const user = await db.getUser(req.params)
-        console.log(user);
         res.send(user);
-    } catch(error) {
-        res.status(500).send('sory, please sign in')
-    }
+    
+});
+
+app.get('/api/therapists', async(req, res) => {
+        const user = await db.getTHerapists()
+        res.status(500).send(user);
+});
+
+app.get('/api/therapists/area/:region', async(req, res) => {
+    console.log("indexjs work");
+    const user = await db.getTHerapists("location",req.params.region)
+    res.status(500).send(user);
+});
+
+app.get('/api/therapists/specialty/:specialty', async(req, res) => {
+    const user = await db.getTHerapistsBySpecialty(req.params.specialty)
+    res.status(500).send(user);
 });
 
 
