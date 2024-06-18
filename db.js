@@ -21,8 +21,15 @@ const User = mongoose.model('users', userSchema)
 
 const therpaistsSchema = new Schema({
     therpaistsName: String,
-    specialization: [],
-    location: String
+    specialization: [String],
+    location: String,
+    appointments:[
+        {
+            date: String,
+            time: String,
+            idUser: String
+        }
+    ]
 })
 
 const Therapist = mongoose.model('therapists', userSchema)
@@ -62,12 +69,30 @@ async function getTHerapistsBySpecialty(value) {
     const result = await Therapist.find({["specialization"]: { $in: [value] } });
     return result;
 }
-main()
 
+async function getTHerapistById(id) {
+    const result = await Therapist.findOne({_id: id});
+    return result.toObject().appointments.filter(appointment => !appointment.idUser );
+}
+
+
+async function postNewAppointment(therapistsId, appointmentId, userIdToPost) {
+    const result = await Therapist.updateOne(
+        { _id: therapistsId, 'appointments._id': appointmentId}, // תנאי החיפוש
+        { $set: {'appointments.$.idUser': userIdToPost} } // העדכון שאנחנו מבצעים
+    );
+    console.log(result);
+    return result
+}
+
+main()
+postNewAppointment("66714e841a647bb071c7fb60","66714e841a647bb071c7fb62","secsus");
 module.exports = {
     getUser,
     createUser,
     getTHerapists,
     createTherpaist,
-    getTHerapistsBySpecialty
+    getTHerapistsBySpecialty,
+    getTHerapistById,
+    postNewAppointment
 }
