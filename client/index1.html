@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-    <!-- <title></title> -->
-    <link rel="stylesheet" href="./style1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./styleP.css">
 </head>
 
 <body>
-        <label for="username"> 
-            <input id="username" type="text" placeholder="username">
-        </label>
-        <label for="password">
-            <input id="password" type="password" placeholder="password">
-        </label>
-        <button id="submit">submit</button>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Enter your password" required>
+            </div>
+            <button id="submit">Submit</button>
+        </form>
+    </div>
     <script src="index1.js"></script>
 </body>
 
