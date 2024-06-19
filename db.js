@@ -27,12 +27,13 @@ const therpaistsSchema = new Schema({
         {
             date: String,
             time: String,
-            idUser: String
+            idUser: String,
+            idThrapist: String
         }
     ]
 })
 
-const Therapist = mongoose.model('therapists', userSchema)
+const Therapist = mongoose.model('therapists', therpaistsSchema)
             
 
 
@@ -54,7 +55,6 @@ async function createTherpaist(newTherpaist) {
 
 async function getTHerapists() {
     const result = await Therapist.find()
-    console.log(result);
     return result
 }
 
@@ -71,29 +71,53 @@ async function getTHerapistsBySpecialty(value) {
     return result;
 }
 
-async function getTHerapistById(id) {
+async function getAppointmentsById(id) {
     const result = await Therapist.findOne({_id: id});
     return result.toObject().appointments.filter(appointment => !appointment.idUser );
 }
 
-
-async function postNewAppointment(therapistsId, appointmentId, userIdToPost) {
+///לא עובד!!
+async function postNewAppointment(therapistId, appointmentId, userId) {
     const result = await Therapist.updateOne(
-        { _id: therapistsId, 'appointments._id': appointmentId}, // תנאי החיפוש
-        { $set: {'appointments.$.idUser': userIdToPost} } // העדכון שאנחנו מבצעים
+        { _id: therapistId, 'appointments._id': appointmentId }, // תנאי החיפוש עם ObjectId
+        { $set: { 'appointments.$.idUser': userId } } // העדכון שאנחנו מבצעים
     );
     console.log(result);
-    return result
+    return result;
+}
+
+
+async function getUserAppointments(userId) {
+    try {
+        const result = await Therapist.aggregate([
+            { $unwind: '$appointments' }, // מפרק את מערך הפגישות לאובייקטים נפרדים
+            { $match: { 'appointments.idUser': userId } }, // מוצא פגישות לפי idUser
+            { $project: {
+                _id: 0,
+                therapistName: 1,
+                specialization: 1,
+                location: 1,
+                appointment: '$appointments'
+            } }
+        ]);
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.error('Error fetching user appointments', error);
+        throw error;
+    }
 }
 
 main()
-postNewAppointment("66714e841a647bb071c7fb60","66714e841a647bb071c7fb62","secsus");
+postNewAppointment('66718e0e11ac1eb0bfb8df26','66718e0e11ac1eb0bfb8df27','secsus');
+getUserAppointments(`secsus`)
 module.exports = {
     getUser,
     createUser,
     getTHerapists,
     createTherpaist,
     getTHerapistsBySpecialty,
-    getTHerapistById,
-    postNewAppointment
+    getAppointmentsById,
+    postNewAppointment,
+    getUserAppointments
 }
