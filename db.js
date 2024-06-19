@@ -76,13 +76,12 @@ async function getAppointmentsById(id) {
     return result.toObject().appointments.filter(appointment => !appointment.idUser );
 }
 
-///לא עובד!!
+
 async function postNewAppointment(therapistId, appointmentId, userId) {
     const result = await Therapist.updateOne(
         { _id: therapistId, 'appointments._id': appointmentId }, // תנאי החיפוש עם ObjectId
         { $set: { 'appointments.$.idUser': userId } } // העדכון שאנחנו מבצעים
     );
-    console.log(result);
     return result;
 }
 
@@ -94,7 +93,7 @@ async function getUserAppointments(userId) {
             { $match: { 'appointments.idUser': userId } }, // מוצא פגישות לפי idUser
             { $project: {
                 _id: 0,
-                therapistName: 1,
+                therapistsName: 1,
                 specialization: 1,
                 location: 1,
                 appointment: '$appointments'
@@ -109,8 +108,6 @@ async function getUserAppointments(userId) {
 }
 
 main()
-postNewAppointment('66718e0e11ac1eb0bfb8df26','66718e0e11ac1eb0bfb8df27','secsus');
-getUserAppointments(`secsus`)
 module.exports = {
     getUser,
     createUser,
