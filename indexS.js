@@ -37,7 +37,7 @@ app.get('/api/therapists/specialty/:specialty', async(req, res) => {
 
 
 app.get('/api/appointments/:therapistsId', async(req, res) => {
-    const user = await db.getTHerapistById(req.params.therapistsId)
+    const user = await db.getAppointmentsById(req.params.therapistsId)
     res.status(500).send(user);
 });
 
@@ -47,6 +47,10 @@ app.post('/api/appointments/:therapistsId/:objectId', async(req, res) => {
     res.status(500).send(user);
 });
 
+app.get('/api/appointments/:userId', async(req, res) => {
+    const user = await db.getUserAppointments(req.params.userId)
+    res.status(500).send(user);
+});
 
 const port = 3001;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
